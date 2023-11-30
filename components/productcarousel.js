@@ -4,16 +4,28 @@ import "@fontsource/poppins"; // Defaults to weight 400
 import "@fontsource/poppins/400.css"; // Specify weight
 import "@fontsource/poppins/400-italic.css";
 import "@fontsource/inter"
+import Link from 'next/link';
+import { BiArrowBack } from 'react-icons/bi';
 export default function Productcarousel() {
   return (
     <div>
-      <div className=' flex  items-center overflow-x-auto lg:mx-auto w-[1120px] mx-[16px] sm:mx-auto'>
+      <div className=' flex items-center overflow-x-auto lg:mx-auto w-[1120px] mx-[16px] sm:mx-auto'>
         <p className=' text-black font-semibold text-2xl leading-[44px] tracking-tight' style={{fontFamily:"poppins"}}>
           New Arrivals
         </p>
-          <span className=' text-base font-medium leading-7 tracking-tight ml-auto' style={{fontFamily:"inter"}}>
-            <a>More Products</a></span>        
       </div>
+      <div className='ml-auto border-b border-black max-w-[135px] flex items-center'>
+          <Link 
+          href="#"
+          className='text-base font-medium leading-7 tracking-tigh flex items-center' 
+          style={{fontFamily:"inter"}}>
+            More Products
+            <span>
+            <BiArrowBack size="20px" className=' rotate-180'/>
+            </span>
+            
+            </Link> 
+          </div>       
       <div className='flex'>
         <div className='flex lg:mx-auto w-[1120px] mx-[16px] overflow-x-auto'>
           <ul className='flex'>
@@ -45,7 +57,7 @@ export default function Productcarousel() {
               </div>
 
 {/* Ratings */}
-<div class="flex flex-row-reverse justify-end items-center">
+<div className="flex flex-row-reverse justify-end items-center">
   <input id="hs-ratings-readonly-1" type="radio" class="peer -ms-5 w-5 h-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="hs-ratings-readonly-1" value="1" />
   <label for="hs-ratings-readonly-1" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none dark:peer-checked:text-yellow-600 dark:text-gray-600">
     <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
