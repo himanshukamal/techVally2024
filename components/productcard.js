@@ -7,7 +7,7 @@ export default function Productcard({product}) {
   return (
     <div>
        <li>
-              <div className='flex  flex-col relative w-[300px] h-[360px]'>
+              <div className='flex  flex-col relative  h-[360px]'>
                 <Image
                   src={`${product.imageUrl}`}
                   alt="bedroom image"
@@ -23,7 +23,7 @@ export default function Productcard({product}) {
                   </p>
                   <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
                     style={{ fontFamily: "inter" }}>
-                    -50%
+                    {product.discountpercentage}%
                   </p>
                 </div>
 

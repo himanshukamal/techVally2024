@@ -11,6 +11,7 @@ export default function Productsmain() {
       name: "Laptop",
       price: 999.99,
       discountedprice:700,
+      discountpercentage:20,
       description: "Powerful laptop with high-performance features.",
       imageUrl: "/productitem1.svg",
       category: "Electronics",
@@ -20,6 +21,7 @@ export default function Productsmain() {
       name: "Smartphone",
       price: 499.99,
       discountedprice:200,
+      discountpercentage:60,
       description: "Latest smartphone with advanced camera and features.",
       imageUrl: "/productitem2.svg",
       category: "Electronics",
@@ -29,6 +31,7 @@ export default function Productsmain() {
       name: "Running Shoes",
       price: 79.99,
       discountedprice:60,
+      discountpercentage:10,
       description: "Comfortable running shoes with advanced cushioning.",
       imageUrl: "/productitem3.svg",
       category: "Fashion",
@@ -38,10 +41,63 @@ export default function Productsmain() {
       name: "Coffee Maker",
       price: 49.99,
       discountedprice:30,
+      discountpercentage:7,
       description: "High-quality coffee maker for brewing your favorite coffee.",
       imageUrl: "/productitem4.svg",
       category: "Appliances",
     },
+    {
+      id: 5,
+      name: "Lamp with wooden stand",
+      price: 39.99,
+      discountedprice:32,
+      discountpercentage:10,
+      description: "Table lamp with wooden stand.",
+      imageUrl: "/lamp1.svg",
+      category: "Appliances",
+    },
+    {
+      id: 6,
+      name: "Luxuary sofa",
+      price: 500.00,
+      discountedprice:299.00,
+      discountpercentage:55,
+      description: "High-quality Luxuary sofa.",
+      imageUrl: "/luxuarysofa.svg",
+      category: "Appliances",
+    },
+    {
+      id: 7,
+      name: "Drawer_unit",
+      price: 89.99,
+      discountedprice:70.00,
+      discountpercentage:12,
+      description: "Drawer_unit.",
+      imageUrl: "/drawer_unit.svg",
+      category: "Appliances",
+    },
+    {
+      id: 8,
+      name: "Black tray",
+      price: 19.99,
+      discountedprice:15.00,
+      discountpercentage:5,
+      description: "Black tray.",
+      imageUrl: "/blacktray.svg",
+      category: "Appliances",
+    },
+    {
+      id: 9,
+      name: "Pillow",
+      price: 5.99,
+      discountedprice:3.99,
+      discountpercentage:8,
+      description: "White Pillow.",
+      imageUrl: "/pillow.svg",
+      category: "Appliances",
+    },
+    
+    
     // Add more products as needed
   ];
   return (
@@ -73,10 +129,10 @@ export default function Productsmain() {
         </div>
       </div>
       {/* -----------------PRODUCT LIST------------------------------- */}
-      <div className='flex-col mt-[40px] ml-[24px] max-w-[858px] mx-auto'>
-        <div className='flex'>
+      <div className='flex-col mt-[40px] ml-[24px] mx-auto'>
+        <div>
           {/* -----------Row 1-------------- */}
-          <ul className='flex'>
+          <ul className='flex flex-wrap w-[1000px]'>
             {products.map((product)=>(
               <Productcard key={product.id} product={product}/> 
             ))}
