@@ -6,18 +6,6 @@ import { useState } from "react";
 import Productcard from "./productcard";
 import Productsmain from "./productsmain";
 export default function Productsidebar({
-  showAllProducts,
-  setShowAllProducts,
-  showPriceRange1,
-  setShowPriceRange1,
-  showPriceRange2,
-  setShowPriceRange2,
-  showPriceRange3,
-  setShowPriceRange3,
-  showPriceRange4,
-  setShowPriceRange4,
-  showPriceRange5,
-  setShowPriceRange5,
 }) {
 
   return (
@@ -132,8 +120,8 @@ export default function Productsidebar({
                 <input
                 type="checkbox" 
                 className="w-[24px] h-[24px]" 
-                checked={showAllProducts}
-                onChange={() => setShowAllProducts(!showAllProducts)}
+                // checked={showAllProducts}
+                // onChange={() => setShowAllProducts(!showAllProducts)}
                 />
               </label>
             </div>
@@ -145,8 +133,8 @@ export default function Productsidebar({
                 $0.00 - 99.99
                 <input type="checkbox"
                  className="w-[24px] h-[24px]" 
-                 checked={showPriceRange1}
-                 onChange={()=>setShowPriceRange1}
+                //  checked={showPriceRange1}
+                //  onChange={()=>setShowPriceRange1}
                  />
               </label>
             </div>
