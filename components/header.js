@@ -55,7 +55,6 @@ export default function Header() {
           className="mr-[16px] hidden sm:block"
         />
         <Image src="/Cart Button.svg" alt="Search" width="50" height="24" />
-        <Image />
       </div>
     </div>
   );

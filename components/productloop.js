@@ -29,6 +29,7 @@ export default function Productloop() {
   <div className='relative max-w-[1120px] mx-auto'>
     <Image
       src='/blacktray-big.svg'
+      alt='image'
       width='548'
       height='729'
     />
@@ -106,7 +107,7 @@ export default function Productloop() {
       <p className=' text-[16px] font-semibold leading-[26px] text-[#6C7275]
        ' style={{fontFamily:"inter"}}>Measurements</p>
       <p className=' text-[20px] font-normal leading-[32px]'
-       style={{fontFamily:"inter"}}>17 1/2x20 5/8 "</p>
+       style={{fontFamily:"inter"}}>17 1/2x20 5/8 </p>
     </div>
 
     {/* ----------------CHOOSE COLOR----------- */}
@@ -127,20 +128,24 @@ export default function Productloop() {
     <Image 
     src="/black-tray.svg"
     width="72"
+    alt='image'
     height="72"
     />
     <Image 
     src="/grey-tray.svg"
+    alt='image'
     width="72"
     height="72"
     />
     <Image 
     src="/red-tray.svg"
+    alt='image'
     width="72"
     height="72"
     />
     <Image 
     src="/faded-tray.svg"
+    alt='image'
     width="72"
     height="72"
     />
