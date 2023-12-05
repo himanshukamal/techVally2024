@@ -2,8 +2,26 @@ import React from "react";
 import { AiOutlineControl } from "react-icons/ai";
 import "@fontsource/inter";
 import { Inter } from "next/font/google";
-export default function Productsidebar() {
+import { useState } from "react";
+import Productcard from "./productcard";
+import Productsmain from "./productsmain";
+export default function Productsidebar({
+  showAllProducts,
+  setShowAllProducts,
+  showPriceRange1,
+  setShowPriceRange1,
+  showPriceRange2,
+  setShowPriceRange2,
+  showPriceRange3,
+  setShowPriceRange3,
+  showPriceRange4,
+  setShowPriceRange4,
+  showPriceRange5,
+  setShowPriceRange5,
+}) {
+
   return (
+  
     <div>
       <div className="hidden lg:block">
         {/* ------------------SIDE BAR----------------------- */}
@@ -111,7 +129,12 @@ export default function Productsidebar() {
                 style={{ fontFamily: "inter" }}
               >
                 All Price
-                <input type="checkbox" className="w-[24px] h-[24px]" />
+                <input
+                type="checkbox" 
+                className="w-[24px] h-[24px]" 
+                checked={showAllProducts}
+                onChange={() => setShowAllProducts(!showAllProducts)}
+                />
               </label>
             </div>
             <div className="mb-[8px]">
@@ -120,7 +143,11 @@ export default function Productsidebar() {
                 style={{ fontFamily: "inter" }}
               >
                 $0.00 - 99.99
-                <input type="checkbox" className="w-[24px] h-[24px]" />
+                <input type="checkbox"
+                 className="w-[24px] h-[24px]" 
+                 checked={showPriceRange1}
+                 onChange={()=>setShowPriceRange1}
+                 />
               </label>
             </div>
             <div className="mb-[8px]">

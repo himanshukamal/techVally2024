@@ -10,20 +10,18 @@ import React from 'react'
 export default function Productlist() {
   return (
     <div>
-        <div className>
+        <div>
             <Header/>
         </div>
-        <div className='max-w-[1120px] mx-auto'>
+        <div className=' flex max-w-[1120px] mx-auto'>
           <Plpageheader/>
         </div>
-        <div className=' flex mt-[60px] max-w-[1120px] mx-auto'>
-          <div className=' max-w-[262px] h-auto'> 
-            <Productsidebar/>
-          </div>
-          <div className=' max-w-[858px] mr-auto'>
-            <Productsmain/>
-          </div>
-         
+        <div className=' flex mt-[65px] max-w-[1120px] mx-auto'>
+        <Productsidebar/>
+        <Productsmain/>
+       
+            
+           
         </div>
         
     </div>

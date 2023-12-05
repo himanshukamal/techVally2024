@@ -3,8 +3,10 @@ import { IoIosArrowDown } from "react-icons/io";
 import Image from "next/image";
 import { useState } from "react";
 import Productcard from "./productcard";
-
-export default function Productsmain() {
+import "@fontsource/inter"
+import { Inter } from "next/font/google";
+import Productsidebar from "./productsidebar";
+ export default function Productsmain() {
   const products = [
     {
       id: 1,
@@ -96,10 +98,55 @@ export default function Productsmain() {
       description: "White Pillow.",
       imageUrl: "/pillow.svg",
       category: "Appliances",
-    },
+    }
 
     // Add more products as needed
   ];
+  let [showAllProducts, setShowAllProducts] = useState(true);
+  let [showPriceRange1, setShowPriceRange1] = useState(false);
+  let [showPriceRange2, setShowPriceRange2] = useState(false);
+  let [showPriceRange3, setShowPriceRange3] = useState(false);
+  let [showPriceRange4, setShowPriceRange4] = useState(false);
+  let [showPriceRange5, setShowPriceRange5] = useState(false);
+<Productsidebar
+        showAllProducts={showAllProducts}
+        setShowAllProducts={setShowAllProducts}
+        showPriceRange1={showPriceRange1}
+        setShowPriceRange1={setShowPriceRange1}
+        showPriceRange2={showPriceRange2}
+        setShowPriceRange2={setShowPriceRange2}
+        showPriceRange3={showPriceRange3}
+        setShowPriceRange3={setShowPriceRange3}
+        showPriceRange4={showPriceRange4}
+        setShowPriceRange4={setShowPriceRange4}
+        showPriceRange5={showPriceRange5}
+        setShowPriceRange5={setShowPriceRange5}
+      />
+  // Filter products based on the selected options
+  const filteredProducts = products.filter((product) => {
+    if (showAllProducts) {
+      return true; // Show all products
+    } else {
+      // Check each price range
+      if (showPriceRange1 && product.price >= 0 && product.price <= 99.99) {
+        return true;
+      }
+      if (showPriceRange2 && product.price >= 100 && product.price <= 199.99) {
+        return true;
+      }
+      if (showPriceRange3 && product.price >= 200 && product.price <= 299.99) {
+        return true;
+      }
+      if (showPriceRange4 && product.price >= 300 && product.price <= 399.99) {
+        return true;
+      }
+      if (showPriceRange5 && product.price >= 400) {
+        return true;
+      }
+
+      return false; // If no checkbox is checked, don't filter
+    }
+  });
   return (
     <div>
       <div className="  flex justify-between ml-[24px] max-w-[858px] ">
@@ -163,429 +210,35 @@ export default function Productsmain() {
       <div className="flex-col mt-[40px] ml-[24px] mx-auto">
         <div>
           {/* -----------Row 1-------------- */}
-          <ul className="flex justify-around flex-wrap lg:w-[900px]">
+          <ul className="flex justify-around flex-wrap  gap-[55px] lg:w-[900px]">
             {products.map((product) => (
               <Productcard key={product.id} product={product} />
             ))}
-            {/* <Productcard />
-            <Productcard/>
-            <Productcard/> */}
-            {/* New arrival list item 1 */}
-            {/* <li>
-              <div className='flex  flex-col relative w-[300px] h-[360px]'>
-                <Image
-                  src="/productitem1.svg"
-                  alt="bedroom image"
-                  width="262"
-                  height="349"
-                />
-
-                
-                <div className='absolute top-[16px] left-[16px] '>
-                  <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                    style={{ fontFamily: "inter" }}>
-                    NEW
-                  </p>
-                  <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                    style={{ fontFamily: "inter" }}>
-                    -50%
-                  </p>
-                </div>
-
-                
-                <div className='absolute  ml-[15px] mt-[279px]'>
-                <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                  style={{ fontFamily: "inter" }}>
-                  Add to cart
-                </button>
-                </div>
-
-               
-                <div className='flex flex-col items-start mt-[12px]'>
-                  <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                    Loveseat Sofa
-                  </p>
-                  <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                    $199.00
-                    <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                      style={{ fontFamily: "inter" }}>
-                      $400.00
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </li> */}
-
-            {/* <li>
-              <div className='flex flex-col relative w-[300px] h-[360px]'>
-                <Image
-                  src="/luxuarysofa.svg"
-                  alt="bedroom image"
-                  width="262"
-                  height="349"
-                />
-
-                
-                <div className='absolute top-[16px] left-[16px] '>
-                  <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                    style={{ fontFamily: "inter" }}>
-                    NEW
-                  </p>
-                  <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                    style={{ fontFamily: "inter" }}>
-                    -50%
-                  </p>
-                </div>
-
-                
-                <div className='absolute  ml-[15px] mt-[279px]'>
-                <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                  style={{ fontFamily: "inter" }}>
-                  Add to cart
-                </button>
-                </div>
-
-                
-                <div className='flex flex-col items-center mt-[12px]'>
-                  <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                    Loveseat Sofa
-                  </p>
-                  <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                    $199.00
-                    <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                      style={{ fontFamily: "inter" }}>
-                      $400.00
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </li> */}
-
-            {/* <li>
-              <div className='flex flex-col relative w-[300px] h-[360px]'>
-                <Image
-                  src="/productitem3.svg"
-                  alt="bedroom image"
-                  width="262"
-                  height="349"
-                />
-
-                
-                <div className='absolute top-[16px] left-[16px] '>
-                  <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                    style={{ fontFamily: "inter" }}>
-                    NEW
-                  </p>
-                  <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                    style={{ fontFamily: "inter" }}>
-                    -50%
-                  </p>
-                </div>
-
-                
-                <div className='absolute  ml-[15px] mt-[279px]'>
-                <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                  style={{ fontFamily: "inter" }}>
-                  Add to cart
-                </button>
-                </div>
-
-                
-                <div className='flex flex-col items-center mt-[12px]'>
-                  <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                    Loveseat Sofa
-                  </p>
-                  <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                    $199.00
-                    <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                      style={{ fontFamily: "inter" }}>
-                      $400.00
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </li> */}
+            
           </ul>
         </div>
         {/* --------------------2nd row-------------------- */}
         <div className="flex mt-[52px]">
           <ul className="flex">
-            {/* <li>
-                <div className='flex flex-col relative w-[300px] h-[360px]'>
-                  <Image
-                    src="/drawer_unit.svg"
-                    alt="bedroom image"
-                    width="262"
-                    height="349"
-                  />
-
-                  
-                  <div className='absolute top-[16px] left-[16px] '>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                      style={{ fontFamily: "inter" }}>
-                      NEW
-                    </p>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                      style={{ fontFamily: "inter" }}>
-                      -50%
-                    </p>
-                  </div>
-
-                
-                  <div className='absolute  ml-[15px] mt-[279px]'>
-                  <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                    style={{ fontFamily: "inter" }}>
-                    Add to cart
-                  </button>
-                  </div>
-
-             
-                  <div className='flex flex-col items-center mt-[12px]'>
-                    <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                      Loveseat Sofa
-                    </p>
-                    <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                      $199.00
-                      <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                        style={{ fontFamily: "inter" }}>
-                        $400.00
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </li> */}
-
-            {/* <li>
-                <div className='flex flex-col relative w-[300px] h-[360px]'>
-                  <Image
-                    src="/blacktray.svg"
-                    alt="bedroom image"
-                    width="262"
-                    height="349"
-                  />
-
-                 
-                  <div className='absolute top-[16px] left-[16px] '>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                      style={{ fontFamily: "inter" }}>
-                      NEW
-                    </p>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                      style={{ fontFamily: "inter" }}>
-                      -50%
-                    </p>
-                  </div>
-
-                  
-                  <div className='absolute  ml-[15px] mt-[279px]'>
-                  <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                    style={{ fontFamily: "inter" }}>
-                    Add to cart
-                  </button>
-                  </div>
-
-                  
-                  <div className='flex flex-col items-center mt-[12px]'>
-                    <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                      Loveseat Sofa
-                    </p>
-                    <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                      $199.00
-                      <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                        style={{ fontFamily: "inter" }}>
-                        $400.00
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </li> */}
-
-            {/* <li>
-                <div className='flex flex-col relative w-[300px] h-[360px]'>
-                  <Image
-                    src="/lamp1.svg"
-                    alt="bedroom image"
-                    width="262"
-                    height="349"
-                  />
-
-                  
-                  <div className='absolute top-[16px] left-[16px] '>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                      style={{ fontFamily: "inter" }}>
-                      NEW
-                    </p>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                      style={{ fontFamily: "inter" }}>
-                      -50%
-                    </p>
-                  </div>
-
-                  
-                  <div className='absolute  ml-[15px] mt-[279px]'>
-                  <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                    style={{ fontFamily: "inter" }}>
-                    Add to cart
-                  </button>
-                  </div>
-
-                  
-                  <div className='flex flex-col items-center mt-[12px]'>
-                    <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                      Loveseat Sofa
-                    </p>
-                    <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                      $199.00
-                      <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                        style={{ fontFamily: "inter" }}>
-                        $400.00
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </li> */}
+           
           </ul>
         </div>
         {/* ----------------3rd row------------------------------ */}
         <div className="flex mt-[52px]">
           <ul className="flex">
-            {/* <li>
-                <div className='flex flex-col relative w-[300px] h-[360px]'>
-                  <Image
-                    src="/pillow.svg"
-                    alt="bedroom image"
-                    width="262"
-                    height="349"
-                  />
-
-                  
-                  <div className='absolute top-[16px] left-[16px] '>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                      style={{ fontFamily: "inter" }}>
-                      NEW
-                    </p>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                      style={{ fontFamily: "inter" }}>
-                      -50%
-                    </p>
-                  </div>
-
-                  
-                  <div className='absolute  ml-[15px] mt-[279px]'>
-                  <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                    style={{ fontFamily: "inter" }}>
-                    Add to cart
-                  </button>
-                  </div>
-
-                 
-                  <div className='flex flex-col items-center mt-[12px]'>
-                    <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                      Loveseat Sofa
-                    </p>
-                    <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                      $199.00
-                      <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                        style={{ fontFamily: "inter" }}>
-                        $400.00
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </li> */}
-            {/* 
-              <li>
-                <div className='flex flex-col relative w-[300px] h-[360px]'>
-                  <Image
-                    src="/productitem2.svg"
-                    alt="bedroom image"
-                    width="262"
-                    height="349"
-                  />
-
-                  
-                  <div className='absolute top-[16px] left-[16px] '>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                      style={{ fontFamily: "inter" }}>
-                      NEW
-                    </p>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                      style={{ fontFamily: "inter" }}>
-                      -50%
-                    </p>
-                  </div>
-
-                  
-                  <div className='absolute  ml-[15px] mt-[279px]'>
-                  <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                    style={{ fontFamily: "inter" }}>
-                    Add to cart
-                  </button>
-                  </div>
-
-                  
-                  <div className='flex flex-col items-center mt-[12px]'>
-                    <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                      Loveseat Sofa
-                    </p>
-                    <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                      $199.00
-                      <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                        style={{ fontFamily: "inter" }}>
-                        $400.00
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </li> */}
-
-            {/* <li>
-                <div className='flex flex-col relative w-[300px] h-[360px]'>
-                  <Image
-                    src="/productitem4.svg"
-                    alt="bedroom image"
-                    width="262"
-                    height="349"
-                  />
-
-                  
-                  <div className='absolute top-[16px] left-[16px] '>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-white'
-                      style={{ fontFamily: "inter" }}>
-                      NEW
-                    </p>
-                    <p className='text-[16px] font-bold leading-[16px] uppercase py-[4px] px-[14px] rounded bg-green-600 text-white'
-                      style={{ fontFamily: "inter" }}>
-                      -50%
-                    </p>
-                  </div>
-
-                  
-                  <div className='absolute  ml-[15px] mt-[279px]'>
-                  <button className='bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm '
-                    style={{ fontFamily: "inter" }}>
-                    Add to cart
-                  </button>
-                  </div>
-
-                  
-                  <div className='flex flex-col items-center mt-[12px]'>
-                    <p className='text-base font-semibold leading-6' style={{ fontFamily: "inter" }}>
-                      Loveseat Sofa
-                    </p>
-                    <p className='text-sm font-semibold leading-5' style={{ fontFamily: "inter" }}>
-                      $199.00
-                      <span className='decoration-[#6C7275] text-[#6C7275] line-through pl-[12px]'
-                        style={{ fontFamily: "inter" }}>
-                        $400.00
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </li> */}
+            
           </ul>
         </div>
+        
+      </div>
+      <div className="flex item justify-center mt-[5px] w-[163px] h-[40px] mx-auto rounded-full border border-black">
+          <button className="  text-[15px] font-semibold leading-[28px] tracking-[-0.4px]"
+           style={{fontFamily:"Inter"}}>
+            Show More
+          </button>
+
       </div>
     </div>
   );
 }
+

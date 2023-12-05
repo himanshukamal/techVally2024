@@ -5,7 +5,7 @@ export default function Productcard({ product }) {
   console.log("product", product);
   return (
     <div>
-      <li className="space-y-2 ">
+      <li>
         <div className="flex  flex-col relative  h-[360px]">
           <Image
             src={`${product.imageUrl}`}
