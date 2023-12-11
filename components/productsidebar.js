@@ -5,11 +5,8 @@ import { Inter } from "next/font/google";
 import { useState } from "react";
 import Productcard from "./productcard";
 import Productsmain from "./productsmain";
-export default function Productsidebar({
-}) {
-
+export default function Productsidebar({}) {
   return (
-  
     <div>
       <div className="hidden lg:block">
         {/* ------------------SIDE BAR----------------------- */}
@@ -118,10 +115,10 @@ export default function Productsidebar({
               >
                 All Price
                 <input
-                type="checkbox" 
-                className="w-[24px] h-[24px]" 
-                // checked={showAllProducts}
-                // onChange={() => setShowAllProducts(!showAllProducts)}
+                  type="checkbox"
+                  className="w-[24px] h-[24px]"
+                  // checked={showAllProducts}
+                  // onChange={() => setShowAllProducts(!showAllProducts)}
                 />
               </label>
             </div>
@@ -131,11 +128,12 @@ export default function Productsidebar({
                 style={{ fontFamily: "inter" }}
               >
                 $0.00 - 99.99
-                <input type="checkbox"
-                 className="w-[24px] h-[24px]" 
-                //  checked={showPriceRange1}
-                //  onChange={()=>setShowPriceRange1}
-                 />
+                <input
+                  type="checkbox"
+                  className="w-[24px] h-[24px]"
+                  //  checked={showPriceRange1}
+                  //  onChange={()=>setShowPriceRange1}
+                />
               </label>
             </div>
             <div className="mb-[8px]">

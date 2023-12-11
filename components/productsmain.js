@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Image from "next/image";
 import { useState } from "react";
 import Productcard from "./productcard";
-import "@fontsource/inter"
+import "@fontsource/inter";
 import { Inter } from "next/font/google";
 import Productsidebar from "./productsidebar";
- export default function Productsmain() {
+
+export default function Productsmain({ allPrice, onAllPriceChange }) {
+  console.log("all price in productsmain", allPrice, onAllPriceChange);
+  useEffect(() => {
+    console.log("allPrice in Productsmain changed:", allPrice);
+    // You can invoke onAllPriceChange here if needed
+    // onAllPriceChange(someNewValue);
+  }, [allPrice]);
+
   const products = [
     {
       id: 1,
@@ -98,7 +106,7 @@ import Productsidebar from "./productsidebar";
       description: "White Pillow.",
       imageUrl: "/pillow.svg",
       category: "Appliances",
-    }
+    },
 
     // Add more products as needed
   ];
@@ -108,7 +116,9 @@ import Productsidebar from "./productsidebar";
   // let [showPriceRange3, setShowPriceRange3] = useState(false);
   // let [showPriceRange4, setShowPriceRange4] = useState(false);
   // let [showPriceRange5, setShowPriceRange5] = useState(false);
-{/* <Productsidebar
+
+  {
+    /* <Productsidebar
         showAllProducts={showAllProducts}
         setShowAllProducts={setShowAllProducts}
         showPriceRange1={showPriceRange1}
@@ -121,31 +131,32 @@ import Productsidebar from "./productsidebar";
         setShowPriceRange4={setShowPriceRange4}
         showPriceRange5={showPriceRange5}
         setShowPriceRange5={setShowPriceRange5}
-      /> */}
+      /> */
+  }
   // Filter products based on the selected options
   // const filteredProducts = products.filter((product) => {
-    // if (showAllProducts) {
-    //   return true; // Show all products
-    // } else {
-    //   // Check each price range
-    //   if (showPriceRange1 && product.price >= 0 && product.price <= 99.99) {
-    //     return true;
-    //   }
-    //   if (showPriceRange2 && product.price >= 100 && product.price <= 199.99) {
-    //     return true;
-    //   }
-    //   if (showPriceRange3 && product.price >= 200 && product.price <= 299.99) {
-    //     return true;
-    //   }
-    //   if (showPriceRange4 && product.price >= 300 && product.price <= 399.99) {
-    //     return true;
-    //   }
-    //   if (showPriceRange5 && product.price >= 400) {
-    //     return true;
-    //   }
+  //   if (showAllProducts) {
+  //     return true; // Show all products
+  //   } else {
+  //     // Check each price range
+  //     if (showPriceRange1 && product.price >= 0 && product.price <= 99.99) {
+  //       return true;
+  //     }
+  //     if (showPriceRange2 && product.price >= 100 && product.price <= 199.99) {
+  //       return true;
+  //     }
+  //     if (showPriceRange3 && product.price >= 200 && product.price <= 299.99) {
+  //       return true;
+  //     }
+  //     if (showPriceRange4 && product.price >= 300 && product.price <= 399.99) {
+  //       return true;
+  //     }
+  //     if (showPriceRange5 && product.price >= 400) {
+  //       return true;
+  //     }
 
-    //   return false; // If no checkbox is checked, don't filter
-    // }
+  //     return false; // If no checkbox is checked, don't filter
+  //   }
   // });
   return (
     <div>
@@ -214,31 +225,25 @@ import Productsidebar from "./productsidebar";
             {products.map((product) => (
               <Productcard key={product.id} product={product} />
             ))}
-            
           </ul>
         </div>
         {/* --------------------2nd row-------------------- */}
         <div className="flex mt-[52px]">
-          <ul className="flex">
-           
-          </ul>
+          <ul className="flex"></ul>
         </div>
         {/* ----------------3rd row------------------------------ */}
         <div className="flex mt-[52px]">
-          <ul className="flex">
-            
-          </ul>
+          <ul className="flex"></ul>
         </div>
-        
       </div>
       <div className="flex item justify-center mt-[5px] w-[163px] h-[40px] mx-auto rounded-full border border-black">
-          <button className="  text-[15px] font-semibold leading-[28px] tracking-[-0.4px]"
-           style={{fontFamily:"Inter"}}>
-            Show More
-          </button>
-
+        <button
+          className="  text-[15px] font-semibold leading-[28px] tracking-[-0.4px]"
+          style={{ fontFamily: "Inter" }}
+        >
+          Show More
+        </button>
       </div>
     </div>
   );
 }
-

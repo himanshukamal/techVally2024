@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 export default function Productcard({ product }) {
-  console.log("product", product);
+  // console.log("product", product);
   return (
     <div>
       <li>
