@@ -12,10 +12,12 @@
     "@fontsource/inter": "^5.0.15",
     "@fontsource/poppins": "^5.0.8",
     "@fontsource/space-grotesk": "^5.0.15",
+    "axios": "^1.6.2",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^4.11.0"
+    "react-icons": "^4.11.0",
+    "recharts": "^2.10.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",

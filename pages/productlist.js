@@ -27,10 +27,10 @@ export default function Productlist() {
         <Plpageheader />
       </div>
       <div className=" flex mt-[65px] max-w-[1120px] mx-auto">
-        <Productsidebar
+        {/* <Productsidebar
           allPrice={allPrice}
           onAllPriceChange={handleAllPriceChange}
-        />
+        /> */}
         <Productsmain />
       </div>
     </div>
