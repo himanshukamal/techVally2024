@@ -28,7 +28,7 @@ export default function Signin() {
     localStorage.setItem("password", password);
     console.log("Logging in...");
     // if (password === "lalitapassword") {
-    router.push("/home");
+    router.push("/productlist");
     // }
   };
   return (

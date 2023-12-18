@@ -14,13 +14,13 @@ export default function Header() {
     const myPassword = localStorage.getItem("password");
     console.log("email in Header", myEmail);
     console.log("password in header", myPassword);
-    if (
-      !myEmail ||
-      !myPassword ||
-      (myEmail !== "himanshu.55421@gmail.com" && myPassword !== "himanshu@123")
-    ) {
-      router.push("/signin");
-    }
+    // if (
+    //   !myEmail ||
+    //   !myPassword ||
+    //   (myEmail !== "himanshu.55421@gmail.com" && myPassword !== "himanshu@123")
+    // ) {
+    //   router.push("/signin");
+    // }
   }, []);
 
   return (
