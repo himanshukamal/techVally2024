@@ -1,8 +1,24 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function Productcard({ product }) {
-  // console.log("product", product);
+  console.log("product", product);
+
+  const handleAddToCart = (e) => {
+    console.log("value in handleaddtocart", product);
+    const existingProductsString = localStorage.getItem("products");
+
+    const existingProducts = existingProductsString
+      ? JSON.parse(existingProductsString)
+      : [];
+
+    // Add the new product to the array
+    existingProducts.push(product);
+
+    // Save the updated array back to localStorage
+    localStorage.setItem("products", JSON.stringify(existingProducts));
+  };
+
   return (
     <div>
       <li>
@@ -35,6 +51,7 @@ export default function Productcard({ product }) {
             <button
               className="bg-black font-medium leading-[25px] tracking-[0.4px] w-[230px] h-[46px] text-white px-[24px] py-[8px] rounded shadow-sm "
               style={{ fontFamily: "inter" }}
+              onClick={handleAddToCart}
             >
               Add to cart
             </button>

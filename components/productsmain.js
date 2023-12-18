@@ -530,8 +530,6 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
           </button>
         </div>
       </div>
-
-      <LineChart />
     </div>
   );
 }

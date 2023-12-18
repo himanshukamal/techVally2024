@@ -20,22 +20,22 @@ export default function Home() {
   //     router.push("/signin");
   //   }
   // }, []);
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const myPassword = localStorage.getItem("password");
-      if (!myPassword) {
-        router.replace("/signin");
-      }
-    };
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     const myPassword = localStorage.getItem("password");
+  //     if (!myPassword) {
+  //       router.replace("/signin");
+  //     }
+  //   };
 
-    // Attach storage event listener
-    window.addEventListener("storage", handleStorageChange);
+  //   // Attach storage event listener
+  //   window.addEventListener("storage", handleStorageChange);
 
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, [router]);
+  //   // Cleanup the event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener("storage", handleStorageChange);
+  //   };
+  // }, [router]);
 
   return (
     <div>

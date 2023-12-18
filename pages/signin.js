@@ -27,9 +27,9 @@ export default function Signin() {
     localStorage.setItem("email", email);
     localStorage.setItem("password", password);
     console.log("Logging in...");
-    if (password === "lalitapassword") {
-      router.push("/home");
-    }
+    // if (password === "lalitapassword") {
+    router.push("/home");
+    // }
   };
   return (
     <div className="flex flex-wrap items-start mb-8">
