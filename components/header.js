@@ -8,12 +8,21 @@ import { useRouter } from "next/router";
 
 export default function Header() {
   const router = useRouter();
+  const [productsCount, setProductsCount] = useState(0);
 
   useEffect(() => {
     const myEmail = localStorage.getItem("email");
     const myPassword = localStorage.getItem("password");
     console.log("email in Header", myEmail);
     console.log("password in header", myPassword);
+    // const productsCount = localStorage.getItem("products").length;
+    // console.log("products count is", productsCount);
+
+    const storedProducts = localStorage.getItem("products");
+    const parsedProducts = storedProducts ? JSON.parse(storedProducts) : [];
+
+    // Set the count of products
+    setProductsCount(parsedProducts.length);
     // if (
     //   !myEmail ||
     //   !myPassword ||
@@ -22,7 +31,9 @@ export default function Header() {
     //   router.push("/signin");
     // }
   }, []);
-
+  const handleGoToCart = () => {
+    router.push("/cartpage");
+  };
   return (
     <div className="flex py-4 justify-between mx-[32px] lg:max-w-[1120px] lg:mx-auto">
       <div
@@ -72,7 +83,16 @@ export default function Header() {
           // style={{ marginRight: "16px" }}
           className="mr-[16px] hidden sm:block"
         />
-        <Image src="/Cart Button.svg" alt="Search" width="50" height="24" />
+        <Image
+          src="/Cart Button.svg"
+          alt="Search"
+          width="50"
+          height="24"
+          onClick={handleGoToCart}
+        />
+        <p className="w-[24px] h-[24px] text-white bg-black rounded-full">
+          {productsCount ? productsCount : 0}
+        </p>
       </div>
     </div>
   );
