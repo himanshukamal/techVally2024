@@ -1,4 +1,5 @@
 import Banner from "@/components/banner";
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Homecarousel from "@/components/homecarousel";
 import Homepagesection2 from "@/components/homepagesection2";
@@ -51,6 +52,7 @@ export default function Home() {
         <Values />
       </div>
       <div className="ml-auto">{/* <Banner /> */}</div>
+      <Footer />
     </div>
   );
 }

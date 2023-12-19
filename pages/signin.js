@@ -32,20 +32,22 @@ export default function Signin() {
     // }
   };
   return (
-    <div className="flex flex-wrap items-start mb-8">
+    <div className="min-h-screen flex flex-wrap items-start mb-8">
       {/* Image and Form div */}
-      <div className="md:w-[42vw] bg-gray-100 md:h-screen">
-        <Image
-          src="/login.png"
-          width="600"
-          height="832"
-          alt="signinImage"
-          className="md:pl-[5em]"
-        />
+      <div className="w-[100%] h-screen lg:w-[50vw] ">
+        <div className="w-[100%] h-screen lg:w-[50vw] ">
+          <Image
+            src="/login.png"
+            width="600"
+            height="832"
+            alt="signinImage"
+            className="w-full h-auto max-w-full object-contain mx-auto"
+          />
+        </div>
       </div>
       {/* <Image src="/logo.png"alt="logo"width="150"  height="80" position="relative"/> */}
-      <div className=" flex self-center md:w-[58vw] ">
-        <div className=" w-[456px] mt-10">
+      <div className=" flex self-center justify-center md:w-[50%] p-[3em] ">
+        <div className=" lg:w-[456px] mt-10">
           <form className="space-y-8 ">
             <label
               className=" text-[40px] not-italic font-medium leading-44 tracking-[-0.4px]"
@@ -75,7 +77,7 @@ export default function Signin() {
                 onChange={handleEmail}
                 id="username"
                 placeholder="Your username or email address"
-                className=" text-[16px] not-italic w-[456px] leading-26 font-normal mb-8 border border-grey p-2"
+                className=" w-full text-[16px] not-italic  leading-26 font-normal mb-8 border border-grey p-2"
               ></input>
               <br />
               <input
@@ -84,7 +86,7 @@ export default function Signin() {
                 onChange={handlePassword}
                 id="password"
                 placeholder="Password"
-                className=" decoration-gray-600 w-[456px] leading-26 font-normal mb-8 border border-grey p-2"
+                className="w-full decoration-gray-600 leading-26 font-normal mb-8 border border-grey p-2"
               ></input>
               <br />
             </div>
@@ -103,7 +105,7 @@ export default function Signin() {
             </div>
             <button
               type="submit"
-              className="w-[456px] p-[10px] px-[40px] bg-black text-white rounded-lg"
+              className="w-full p-[10px] px-[40px] bg-black text-white rounded-lg"
               onClick={handleLogin}
             >
               Login

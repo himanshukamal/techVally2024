@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "@/components/header";
 import Productloop from "@/components/productloop";
 import { useRouter } from "next/router";
+import Footer from "@/components/footer";
 
 export default function Productdetails() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export default function Productdetails() {
         <Header />
         <Productloop />
       </div>
+      <Footer />
     </div>
   );
 }

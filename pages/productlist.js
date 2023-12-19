@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Header2 from "@/components/header2";
 import Plpageheader from "@/components/plpageheader";
@@ -33,6 +34,7 @@ export default function Productlist() {
         /> */}
         <Productsmain />
       </div>
+      <Footer />
     </div>
   );
 }

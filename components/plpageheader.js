@@ -10,7 +10,7 @@ export default function Plpageheader() {
     <div>
       <div className=" flex justify-center relative">
         <Image src="/shop-page.svg" alt="shoppage" width="1120" height="392" />
-        <div className=" flex flex-col  items-center absolute left-50  top-[110px]">
+        <div className=" flex flex-col  items-center absolute left-50  top-[10px] md:top-[110px]">
           <div className=" flex">
             <div className=" flex items-center">
               <Link
@@ -30,9 +30,9 @@ export default function Plpageheader() {
               </Link>
             </div>
           </div>
-          <div className=" flex my-[24px]">
+          <div className="absolute  bottom-[-75px] md:bottom-8 flex my-[24px]">
             <p
-              className=" text-[54px]  font-semibold leading-[58px] tracking-[-1px]"
+              className=" top-[2px] text-[54px]  font-semibold leading-[58px] tracking-[-1px]"
               style={{ fontFamily: "poppins" }}
             >
               Shop Page
@@ -40,7 +40,7 @@ export default function Plpageheader() {
           </div>
           <div className=" flex">
             <p
-              className="text-[20px] font-normal leading-[32px]"
+              className="text-[14px] font-normal leading-[32px]"
               style={{ fontFamily: "inter" }}
             >
               Let’s design the place you always imagined.

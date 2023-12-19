@@ -90,7 +90,7 @@ export default function Header() {
           height="24"
           onClick={handleGoToCart}
         />
-        <p className="w-[24px] h-[24px] text-white bg-black rounded-full">
+        <p className="w-[24px] h-[24px] text-white bg-black rounded-full relative right-5 grid place-items-center">
           {productsCount ? productsCount : 0}
         </p>
       </div>
