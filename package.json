@@ -12,12 +12,15 @@
     "@fontsource/inter": "^5.0.15",
     "@fontsource/poppins": "^5.0.8",
     "@fontsource/space-grotesk": "^5.0.15",
+    "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.2",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
-    "recharts": "^2.10.3"
+    "react-redux": "^9.0.4",
+    "recharts": "^2.10.3",
+    "redux": "^5.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",

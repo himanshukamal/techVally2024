@@ -1,8 +1,11 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/productReducer";
 
 export default function Productcard({ product }) {
   console.log("product", product);
+  const dispatch = useDispatch();
 
   const handleAddToCart = (e) => {
     console.log("value in handleaddtocart", product);
@@ -17,6 +20,8 @@ export default function Productcard({ product }) {
 
     // Save the updated array back to localStorage
     localStorage.setItem("products", JSON.stringify(existingProducts));
+    // Dispatch the addToCart action with the product as payload
+    dispatch(addToCart(product));
   };
 
   return (

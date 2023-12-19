@@ -7,10 +7,14 @@ import { Poppins } from "next/font/google";
 import "@fontsource/inter"; // Defaults to weight 400
 import "@fontsource/inter/400.css"; // Specify weight
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../redux/authReducer";
 // import "@fontsource/inter/400-italic.css"; // Specify weight and style
 
 export default function Signin() {
   const router = useRouter();
+
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +32,10 @@ export default function Signin() {
     localStorage.setItem("password", password);
     console.log("Logging in...");
     // if (password === "lalitapassword") {
+    console.log("Dispatching credentials:", { email, password });
+
+    dispatch(setCredentials({ email, password }));
+
     router.push("/productlist");
     // }
   };

@@ -5,11 +5,15 @@ import "@fontsource/space-grotesk/400.css"; // Specify weight
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const router = useRouter();
   const [productsCount, setProductsCount] = useState(0);
 
+  const userEmail = useSelector((state) => state.auth.email);
+  const productsArrayCount = useSelector((state) => state.products.products);
+  console.log("productsArrayCount", productsArrayCount.length);
   useEffect(() => {
     const myEmail = localStorage.getItem("email");
     const myPassword = localStorage.getItem("password");
@@ -75,14 +79,15 @@ export default function Header() {
           // style={{ marginRight: "16px" }}
           className="mr-[16px] hidden sm:block"
         />
-        <Image
+        {/* <Image
           src="/user-circle.svg"
           alt="Search"
           width="24"
           height="24"
           // style={{ marginRight: "16px" }}
           className="mr-[16px] hidden sm:block"
-        />
+        /> */}
+        <p>{userEmail ? userEmail : ""}</p>
         <Image
           src="/Cart Button.svg"
           alt="Search"
@@ -91,7 +96,7 @@ export default function Header() {
           onClick={handleGoToCart}
         />
         <p className="w-[24px] h-[24px] text-white bg-black rounded-full relative right-5 grid place-items-center">
-          {productsCount ? productsCount : 0}
+          {productsArrayCount.length ? productsArrayCount.length : 0}
         </p>
       </div>
     </div>
