@@ -34,6 +34,15 @@ export default function Signin() {
   return (
     <div className="min-h-screen flex flex-wrap items-start mb-8">
       {/* Image and Form div */}
+      <div
+        className="absolute top-4 left-4 text-4xl font-bold leading-6"
+        style={{
+          fontFamily: "Poppins",
+        }}
+      >
+        {" "}
+        TechValley.
+      </div>
       <div className="w-[100%] h-screen lg:w-[50vw] ">
         <div className="w-[100%] h-screen lg:w-[50vw] ">
           <Image
