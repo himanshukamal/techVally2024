@@ -545,7 +545,7 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
           </button>
         </div>
         {/* make 3 buttons for category */}
-        <div className="flex justify-around">
+        {/* <div className="flex justify-around">
           <button
             onClick={handleJewelery}
             className="p-2 rounded-full text-white bg-blue-600"
@@ -570,7 +570,7 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
           >
             women&apos;s clothing
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
