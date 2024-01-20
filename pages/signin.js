@@ -26,15 +26,28 @@ export default function Signin() {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
+
   const handleLogin = (e) => {
     e.preventDefault();
+
     localStorage.setItem("email", email);
     localStorage.setItem("password", password);
+
     console.log("Logging in...");
     // if (password === "lalitapassword") {
+    console.log("credentials in signin", email, password);
     console.log("Dispatching credentials:", { email, password });
 
+    // sending auth data to redux
     dispatch(setCredentials({ email, password }));
+
+    // 1. api call to backend
+    // 2. backend will give success or error Message
+    // 3. based upone that message you will redirect to different page or show error message
+
+    // if (password === "lalithapassword") {
+    //   router.push("/productlist");
+    // }
 
     router.push("/productlist");
     // }

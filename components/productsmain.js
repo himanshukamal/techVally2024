@@ -10,6 +10,7 @@ import { AiOutlineControl } from "react-icons/ai";
 import "@fontsource/inter";
 import axios from "axios";
 import LineChart from "./lineChart";
+import { useSelector } from "react-redux";
 // import { Inter } from "next/font/google";
 // import { useState } from "react";
 
@@ -21,9 +22,13 @@ const defaultFilterOptions = {
 };
 
 export default function Productsmain({ allPrice, onAllPriceChange }) {
-  console.log("all price in productsmain", allPrice, onAllPriceChange);
+  // fetching search value from store
+  const searchedQuery = useSelector((state) => state.search.query);
+
+  console.log("searchedquery in productsmain", searchedQuery);
+
   useEffect(() => {
-    console.log("allPrice in Productsmain changed:", allPrice);
+    // console.log("allPrice in Productsmain changed:", allPrice);
     // You can invoke onAllPriceChange here if needed
     // onAllPriceChange(someNewValue);
   }, [allPrice]);
@@ -164,23 +169,45 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
     { label: "$400.00+", range: [400, Infinity] },
   ];
 
-  // Filter products based on the selected options
-  const filteredProducts = products.filter((product) => {
-    // Check category filter
-    if (
-      filterOptions.selectedCategories.length === 0 ||
-      filterOptions.selectedCategories.includes(product.category)
-    ) {
-      // Check price range filter
-      if (
-        product.price >= filterOptions.minPrice &&
-        product.price <= filterOptions.maxPrice
-      ) {
-        return true;
-      }
-    }
+  // console.log("all price in productsmain", allPrice, onAllPriceChange);
 
-    return false;
+  // Filter products based on the selected options
+  // const filteredProducts = products.filter((product) => {
+  //   // Check category filter
+  //   // const filterbyName = product.name.includes(searchedQuery);
+  //   if (
+  //     filterOptions.selectedCategories.length === 0 ||
+  //     filterOptions.selectedCategories.includes(product.category)
+  //   ) {
+  //     // Check price range filter
+  //     if (
+  //       product.price >= filterOptions.minPrice &&
+  //       product.price <= filterOptions.maxPrice
+  //     ) {
+  //       return true;
+  //     }
+  //   }
+
+  //   return false;
+  // });
+  const filteredProducts = products.filter((product) => {
+    // Check if the product name includes the searched query
+    const nameMatches = product.name
+      .toLowerCase()
+      .includes(searchedQuery.toLowerCase());
+
+    // Check category filter
+    const categoryFilter =
+      filterOptions.selectedCategories.length === 0 ||
+      filterOptions.selectedCategories.includes(product.category);
+
+    // Check price range filter
+    const priceFilter =
+      product.price >= filterOptions.minPrice &&
+      product.price <= filterOptions.maxPrice;
+
+    // Return true only if all conditions are met
+    return nameMatches && categoryFilter && priceFilter;
   });
 
   const handleCategoryChange = (category) => {
@@ -226,35 +253,10 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
     axios
       .get(`https://fakestoreapi.com/products?limit=5`)
       .then((adarsh) => {
-        console.log("adarsh", adarsh);
+        // console.log("adarsh", adarsh);
       })
       .catch((err) => {});
-
-    // airbnb api
-    // const axios = require('axios');
-
-    // const options = {
-    //   method: 'GET',
-    //   url: 'https://airbnb19.p.rapidapi.com/api/v1/searchProperty',
-    //   params: {
-    //     category: 'TAB_8225',
-    //     totalRecords: '10',
-    //     currency: 'USD',
-    //     adults: '1'
-    //   },
-    //   headers: {
-    //     'X-RapidAPI-Key': '5c1931987amsh6e351979cb3a9d9p1e2391jsnfde138366c7d',
-    //     'X-RapidAPI-Host': 'airbnb19.p.rapidapi.com'
-    //   }
-    // };
-
-    // try {
-    // 	const response = await axios.request(options);
-    // 	console.log(response.data);
-    // } catch (error) {
-    // 	console.error(error);
-    // }
-  }, []);
+  }, [category]);
 
   // Handle "All Price" checkbox change
   const handleShowAllProductsChange = () => {
@@ -270,6 +272,19 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
       minPrice: range[0],
       maxPrice: range[1],
     }));
+  };
+
+  const handleJewelery = () => {
+    setCategory("jewelery");
+  };
+  const handleElectronics = () => {
+    setCategory("electronics");
+  };
+  const handleMensClothing = () => {
+    setCategory("men's clothing");
+  };
+  const handleWomensClothing = () => {
+    setCategory("women's clothing");
   };
 
   return (
@@ -506,7 +521,7 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
               ))}
             </ul> */}
             <ul className="flex justify-around flex-wrap gap-[55px] lg:w-[900px]">
-              {console.log("product length", products.length)}
+              {/* {console.log("product length", products.length)} */}
               {filteredProducts.map((product) => (
                 <Productcard key={product.id} product={product} />
               ))}
@@ -527,6 +542,33 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
             style={{ fontFamily: "Inter" }}
           >
             Show More
+          </button>
+        </div>
+        {/* make 3 buttons for category */}
+        <div className="flex justify-around">
+          <button
+            onClick={handleJewelery}
+            className="p-2 rounded-full text-white bg-blue-600"
+          >
+            jewelery
+          </button>
+          <button
+            onClick={handleElectronics}
+            className="p-2 rounded-full text-white bg-blue-600"
+          >
+            electronics
+          </button>
+          <button
+            onClick={handleMensClothing}
+            className="p-2 rounded-full text-white bg-blue-600"
+          >
+            men's clothing
+          </button>
+          <button
+            onClick={handleWomensClothing}
+            className="p-2 rounded-full text-white bg-blue-600"
+          >
+            women's clothing
           </button>
         </div>
       </div>

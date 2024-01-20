@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/productReducer";
 
 export default function Productcard({ product }) {
-  console.log("product", product);
+  // console.log("product", product);
   const dispatch = useDispatch();
 
   const handleAddToCart = (e) => {
-    console.log("value in handleaddtocart", product);
+    // console.log("value in handleaddtocart", product);
     const existingProductsString = localStorage.getItem("products");
 
     const existingProducts = existingProductsString

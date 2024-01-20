@@ -5,8 +5,11 @@ import "@fontsource/poppins/400.css"; // Specify weight
 import "@fontsource/poppins/400-italic.css";
 import "@fontsource/inter"; // Defaults to weight 400
 import "@fontsource/inter/400.css"; // Specify weight
+import { useSelector } from "react-redux";
 
 export default function Ordersummary() {
+  const cartContent = useSelector((state) => state.products);
+  console.log("cartcontent in ordersummary", cartContent);
   return (
     <div className="border-[1px] border-[#6C7275] rounded-md w-[312px] lg:w-[350px] flex flex-col justify-center items-center mx-auto lg:mx-[10px] h-[700px] my-[24px]">
       <div className="pr-[110px] pt-[40px]">

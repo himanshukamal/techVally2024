@@ -6,9 +6,24 @@ import "@fontsource/poppins/400-italic.css";
 import "@fontsource/inter"; // Defaults to weight 400
 import "@fontsource/inter/400.css"; // Specify weight
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 export default function Cartcontent() {
+  const [quantity, setQuantity] = useState(1);
+
+  const [quantities, setQuantities] = useState({});
+
+  const handleQuantityChange = (productId, newQuantity) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [productId]: newQuantity,
+    }));
+  };
+  console.log("quantities", quantities);
+  const cartContent = useSelector((state) => state.products);
+  console.log("cartContent in cartcontent", cartContent);
   const router = useRouter();
+
   const cartArray = [
     {
       price: 5,
@@ -35,15 +50,29 @@ export default function Cartcontent() {
 
   const [productCount, setProductCount] = useState(cartArray.quantity);
 
-  const increaseCount = () => {
-    setProductCount(productCount + 1);
-  };
-  const decreaseCount = () => {
-    setProductCount(productCount - 1);
+  // const increaseCount = (e) => {
+  //   // e.preventDefault();
+  //   console.log("incraese count fn and id", e.id);
+  //   setQuantity(quantity + 1);
+  // };
+  // const decreaseCount = (e) => {
+  //   // e.preventDefault();
+  //   setQuantity(quantity - 1);
 
-    if (productCount <= 0) {
-      setProductCount(0);
-      setTotalValue(0);
+  //   if (productCount <= 0) {
+  //     setQuantity(0);
+  //     // setTotalValue(0);
+  //   }
+  // };
+  const increaseCount = (productId) => {
+    const currentQuantity = quantities[productId] || 0;
+    handleQuantityChange(productId, currentQuantity + 1);
+  };
+
+  const decreaseCount = (productId) => {
+    const currentQuantity = quantities[productId] || 0;
+    if (currentQuantity > 0) {
+      handleQuantityChange(productId, currentQuantity - 1);
     }
   };
   //  const total = () => {
@@ -85,17 +114,17 @@ export default function Cartcontent() {
         </div>
 
         <div className="flex flex-col">
-          {cartArray.map((item, index) => (
+          {cartContent.products.map((item, index) => (
             <div
               key={index}
               className="h-[144px] border-b-[1px] border-[#E8ECEF] flex flex-row justify-between lg:items-center py-[24px] "
             >
-              <Image src={item.picture} width="80" height="96" />
+              <Image src={item.imageUrl} width="80" height="96" />
               <div className="flex flex-col lg:w-[200px] lg:flex-row h-[96px] justify-between lg:mr-[0px] lg:items-center">
                 {/* Display other details of the item */}
                 <div className="flex flex-col">
                   <p className="text-[14px] font-semibold leading-[22px] pb-[8px]">
-                    {item.productName}
+                    {item.name}
                   </p>
                   <p className="text-[12px] font-normal leading-[20px] text-[#6C7275]">
                     Color: {item.color}
@@ -111,17 +140,24 @@ export default function Cartcontent() {
                 {/* Quantity */}
                 <div className="flex flex-row justify-center items-center border border-black w-[80px] h-[26px] rounded-md ">
                   <button
-                    onClick={decreaseCount}
+                    // onClick={(e) => {
+                    //   decreaseCount(item, e);
+                    // }}
+                    onClick={() => decreaseCount(item.id)}
                     type="button"
                     className="w-[30px] text-[16px]"
                   >
                     -
                   </button>
                   <p className="text-[12px] font-semibold leading-[20px]">
-                    {item.quantity}
+                    {/* {quantity} */}
+                    {quantities[item.id] || 0}
                   </p>
                   <button
-                    onClick={increaseCount}
+                    // onClick={(e) => {
+                    //   increaseCount(item, e);
+                    // }}
+                    onClick={() => increaseCount(item.id)}
                     type="button"
                     className="w-[30px]"
                   >
@@ -149,152 +185,11 @@ export default function Cartcontent() {
                   className="text-[14px] font-semibold leading-[22px]"
                   style={{ fontFamily: "Inter" }}
                 >
-                  ${item.price * item.quantity}
+                  ${item.price * quantities[item.id]}
                 </p>
               </div>
             </div>
           ))}
-
-          {/* <div className="h-[144px] border-b-[1px] border-[#E8ECEF] flex flex-row justify-between  lg:items-center py-[24px] ">
-            <Image src="/cart_item_2.svg" width="80" height="96" />
-            <div className="flex flex-col lg:w-[200px] lg:flex-row h-[96px] justify-between lg:mr-[0px] lg:items-center">
-              <div className="flex flex-col">
-                <p
-                  className="text-[14px] font-semibold leading-[22px] pb-[8px]"
-                  style={{ fontFamily: "Inter" }}
-                >
-                  Tray Table
-                </p>
-                <p
-                  className="text-[12px] font-normal leading-[20px] text-[#6C7275]"
-                  style={{ fontFamily: "Inter" }}
-                >
-                  Color: Red
-                </p>
-                <Image
-                  src="/remove.svg"
-                  width="24"
-                  height="24"
-                  className="hidden lg:block py-[12px]"
-                />
-              </div>
-
-              <div className="flex flex-row justify-center items-center border border-black w-[80px] h-[26px] rounded-md ">
-                <button
-                  onClick={decreaseCount}
-                  type="button"
-                  className="w-[30px] text-[16px]"
-                >
-                  -
-                </button>
-                <p
-                  className="text-[12px] font-semibold leading-[20px]"
-                  style={{ fontFamily: "Inter" }}
-                >
-                  {productCount}
-                </p>
-                <button
-                  onClick={increaseCount}
-                  type="button"
-                  className="w-[30px]"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col justify-start items-end">
-              <p
-                className="text-[14px] font-semibold leading-[22px]"
-                style={{ fontFamily: "Inter" }}
-              >
-                $19.19
-              </p>
-              <Image
-                src="/remove.svg"
-                width="24"
-                height="24"
-                className="lg:hidden py-[12px]"
-              />
-            </div>
-            <div className="hidden lg:flex">
-              <p
-                className="text-[14px] font-semibold leading-[22px]"
-                style={{ fontFamily: "Inter" }}
-              >
-                $38.38
-              </p>
-            </div>
-          </div>
-          <div className="h-[144px] border-b-[1px] border-[#E8ECEF] flex flex-row justify-between  lg:items-center py-[24px]">
-            <Image src="/cart_item_3.svg" width="80" height="96" />
-            <div className="flex flex-col lg:w-[200px] lg:flex-row h-[96px] justify-between lg:mr-[0px] lg:items-center">
-              <div className="flex flex-col">
-                <p
-                  className="text-[14px] font-semibold leading-[22px] pb-[8px]"
-                  style={{ fontFamily: "Inter" }}
-                >
-                  Table Lamp
-                </p>
-                <p
-                  className="text-[12px] font-normal leading-[20px] text-[#6C7275]"
-                  style={{ fontFamily: "Inter" }}
-                >
-                  Color: Black
-                </p>
-                <Image
-                  src="/remove.svg"
-                  width="24"
-                  height="24"
-                  className="hidden lg:block py-[12px]"
-                />
-              </div>
-
-              <div className="flex flex-row justify-center items-center border border-black w-[80px] h-[26px] rounded-md ">
-                <button
-                  onClick={decreaseCount}
-                  type="button"
-                  className="w-[30px] text-[16px]"
-                >
-                  -
-                </button>
-                <p
-                  className="text-[12px] font-semibold leading-[20px]"
-                  style={{ fontFamily: "Inter" }}
-                >
-                  {productCount}
-                </p>
-                <button
-                  onClick={increaseCount}
-                  type="button"
-                  className="w-[30px]"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col justify-start items-end">
-              <p
-                className="text-[14px] font-semibold leading-[22px]"
-                style={{ fontFamily: "Inter" }}
-              >
-                $19.19
-              </p>
-              <Image
-                src="/remove.svg"
-                width="24"
-                height="24"
-                className="lg:hidden py-[12px]"
-              />
-            </div>
-            <div className="hidden lg:flex">
-              <p
-                className="text-[14px] font-semibold leading-[22px]"
-                style={{ fontFamily: "Inter" }}
-              >
-                $38.19
-              </p>
-            </div>
-          </div> */}
         </div>
         <div className="flex flex-col my-[24px] w-[312px]">
           <p
