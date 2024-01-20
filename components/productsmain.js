@@ -562,13 +562,13 @@ export default function Productsmain({ allPrice, onAllPriceChange }) {
             onClick={handleMensClothing}
             className="p-2 rounded-full text-white bg-blue-600"
           >
-            men's clothing
+            men&apos;s clothing
           </button>
           <button
             onClick={handleWomensClothing}
             className="p-2 rounded-full text-white bg-blue-600"
           >
-            women's clothing
+            women&apos;s clothing
           </button>
         </div>
       </div>
