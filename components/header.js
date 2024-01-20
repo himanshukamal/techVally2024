@@ -62,7 +62,7 @@ export default function Header() {
         <Link href="#" className="mr-[40px] decoration-inherit">
           Shop
         </Link>
-        <Link href="#" className="mr-[40px] decoration-inherit">
+        <Link href="/productlist" className="mr-[40px] decoration-inherit">
           Product
         </Link>
         <Link href="#" className="mr-[40px] decoration-inherit">
