@@ -5,8 +5,10 @@ import "@fontsource/poppins/400.css"; // Specify weight
 import "@fontsource/poppins/400-italic.css";
 import "@fontsource/inter"; // Defaults to weight 400
 import "@fontsource/inter/400.css"; // Specify weight
+import { useRouter } from "next/router";
 
 export default function Cartcontent() {
+  const router = useRouter();
   const cartArray = [
     {
       price: 5,
@@ -48,7 +50,9 @@ export default function Cartcontent() {
   //   totalValue = productCount * price;
 
   // // }
-
+  const handleCheckout = () => {
+    router.push("/checkoutpage");
+  };
   return (
     <div className="flex flex-col lg:flex-row justify-center mx-auto">
       {/* <items> */}
@@ -434,12 +438,13 @@ export default function Cartcontent() {
           </p>
         </div>
         <div className="flex border-[2px] rounded-md border-[#6C7275]  w-[280px] lg:w-[365px] h-[52px] items-center justify-center mx-[16px] my-[32px] bg-[#121212] text-[#FFFFFF]">
-          <p
+          <button
             className="text-[16px] font-semibold lg:font-normal leading-[26px]"
             style={{ fontFamily: "Inter" }}
+            onClick={handleCheckout}
           >
             Checkout
-          </p>
+          </button>
         </div>
       </div>
     </div>
